@@ -1,7 +1,8 @@
 local api = require("utils.api")
-
+--------------------------------------------------------------------------------
+-- vim方便编辑的映射
+--------------------------------------------------------------------------------
 api.map.bulk_register({
-    -- vim方便编辑的映射
     {
         mode = { "" },
         lhs = ":",
@@ -17,9 +18,16 @@ api.map.bulk_register({
         description = "exchange ; and :",
     },
     {
+        mode = { "v" },
+        lhs = "Y",
+        rhs = '"+y',
+        options = { silent = true},
+        description = "copy to the system clipboard",
+    },
+    {
         mode = { "n" },
         lhs = "Q",
-        rhs = ":q",
+        rhs = ":q<CR>",
         options = { silent = true},
         description = "quit the window",
     },
@@ -60,9 +68,10 @@ api.map.bulk_register({
     },
 })
 
-
+--------------------------------------------------------------------------------
+-- 方便进行文本间移动的快捷键
+--------------------------------------------------------------------------------
 api.map.bulk_register({
-    -- 方便进行文本间移动的快捷键
     {
         mode = { "n" },
         lhs = "<c-u>",
@@ -121,14 +130,14 @@ api.map.bulk_register({
         mode = { "n", "v" },
         lhs = "J",
         rhs = "5j",
-        options = { silent = true, expr = true },
+        options = { silent = true },
         description = "move down five lines",
     },
     {
         mode = { "n", "v" },
         lhs = "K",
         rhs = "5k",
-        options = { silent = true, expr = true },
+        options = { silent = true },
         description = "move up five lines",
     },
     {
@@ -175,8 +184,10 @@ api.map.bulk_register({
     },
 })
 
+--------------------------------------------------------------------------------
+-- 方便进行分屏的快捷键
+--------------------------------------------------------------------------------
 api.map.bulk_register({
-    -- 方便进行分屏的快捷键
     {
         mode = { "n" },
         lhs = "<leader>h",
@@ -268,4 +279,46 @@ api.map.bulk_register({
         options = { silent = true },
         description = "Increase vertical split screen size",
     },
+})
+
+--------------------------------------------------------------------------------
+-- telescope 相关设置
+--------------------------------------------------------------------------------
+api.map.bulk_register({
+  {
+      mode = { "n" },
+      lhs = "<leader>ff",
+      rhs = function()
+          require("telescope.builtin").find_files()
+      end,
+      options = { silent = true },
+      description = "Find files in the current workspace",
+  },
+  {
+      mode = { "n" },
+      lhs = "<leader>fl",
+      rhs = function()
+          require("telescope.builtin").live_grep()
+      end,
+      options = { silent = true },
+      description = "Find string in the current workspace",
+  },
+  {
+      mode = { "n" },
+      lhs = "<leader>fh",
+      rhs = function()
+          require("telescope.builtin").oldfiles()
+      end,
+      options = { silent = true },
+      description = "Find telescope history",
+  },
+  {
+      mode = { "n" },
+      lhs = "<leader>ft",
+      rhs = function()
+          require("telescope.builtin").help_tags()
+      end,
+      options = { silent = true },
+      description = "Find all help document tags",
+  },
 })

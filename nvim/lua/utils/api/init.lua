@@ -12,6 +12,7 @@ local api = {
 -- 该函数先验证是否为需要的参数，然后验证插件可用性，如果不可用通过notify反馈并停止插件加载，否则加载该插件进参数中
 function api.safe_load(M)
     if not M.safe_requires then
+        vim.notify(string.format("the plugin %s do not have conf files", load_name), "WARN", { title = "plugin" })
         return
     end
 

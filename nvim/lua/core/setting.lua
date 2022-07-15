@@ -38,6 +38,13 @@ local setting = {
         linebreak = true,
         sessionoptions = "buffers,curdir,folds,help,tabpages,winsize,globals",
         fillchars = "vert:┃,horiz:━,verthoriz:╋,horizup:┻,horizdown:┳,vertleft:┫,vertright:┣,eob: ",
+        smartcase = true,
+        smartindent = true,
+        shiftwidth = 2,
+        tabstop = 2,
+        softtabstop=2, -- 设置删除时候对空格的处理方式，相当于每次删除两个空格
+        expandtab = true, -- 将tab视为空格
+        autoindent = true,
     },
 }
 
