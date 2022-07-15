@@ -32,6 +32,7 @@ alias ...='cd ../..'
 alias ....='cd ../../..'
 alias cdv='cd ~/dotfiles/nvim'
 alias cdd='cd ~/Documents/'
+alias ra="ranger"
 
 # ================================================================================
 # color setting 

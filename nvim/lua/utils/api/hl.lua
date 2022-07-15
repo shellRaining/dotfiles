@@ -1,4 +1,5 @@
--- 
+-- 设置nvim高亮？
+-- TODO:
 
 local hl = {}
 
