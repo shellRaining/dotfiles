@@ -118,6 +118,13 @@ _G.packer_plugins = {
     path = "/home/lu/.local/share/nvim/site/pack/packer/start/plenary.nvim",
     url = "https://github.com/nvim-lua/plenary.nvim"
   },
+  ["project.nvim"] = {
+    config = { "                         require('utils.api').safe_load(require('conf/plugins/nv_project'))\n                         require('conf/plugins/nv_project').load()\n                         require('conf/plugins/nv_project').after()\n                         " },
+    loaded = true,
+    needs_bufread = false,
+    path = "/home/lu/.local/share/nvim/site/pack/packer/opt/project.nvim",
+    url = "https://github.com/ahmedkhalf/project.nvim"
+  },
   ["telescope.nvim"] = {
     config = { "                         require('utils.api').safe_load(require('conf/plugins/nv_telescope'))\n                         require('conf/plugins/nv_telescope').load()\n                         require('conf/plugins/nv_telescope').after()\n                         " },
     loaded = true,
@@ -128,6 +135,20 @@ _G.packer_plugins = {
 }
 
 time([[Defining packer_plugins]], false)
+-- Setup for: project.nvim
+time([[Setup for project.nvim]], true)
+require('conf/plugins/nv_project').before()
+time([[Setup for project.nvim]], false)
+time([[packadd for project.nvim]], true)
+vim.cmd [[packadd project.nvim]]
+time([[packadd for project.nvim]], false)
+-- Setup for: catppuccin
+time([[Setup for catppuccin]], true)
+require('conf/plugins/nv_catppuccin').before()
+time([[Setup for catppuccin]], false)
+time([[packadd for catppuccin]], true)
+vim.cmd [[packadd catppuccin]]
+time([[packadd for catppuccin]], false)
 -- Setup for: telescope.nvim
 time([[Setup for telescope.nvim]], true)
 require('conf/plugins/nv_telescope').before()
@@ -142,13 +163,20 @@ time([[Setup for nvim-notify]], false)
 time([[packadd for nvim-notify]], true)
 vim.cmd [[packadd nvim-notify]]
 time([[packadd for nvim-notify]], false)
--- Setup for: catppuccin
-time([[Setup for catppuccin]], true)
-require('conf/plugins/nv_catppuccin').before()
-time([[Setup for catppuccin]], false)
-time([[packadd for catppuccin]], true)
-vim.cmd [[packadd catppuccin]]
-time([[packadd for catppuccin]], false)
+-- Config for: project.nvim
+time([[Config for project.nvim]], true)
+                         require('utils.api').safe_load(require('conf/plugins/nv_project'))
+                         require('conf/plugins/nv_project').load()
+                         require('conf/plugins/nv_project').after()
+                         
+time([[Config for project.nvim]], false)
+-- Config for: catppuccin
+time([[Config for catppuccin]], true)
+                         require('utils.api').safe_load(require('conf/plugins/nv_catppuccin'))
+                         require('conf/plugins/nv_catppuccin').load()
+                         require('conf/plugins/nv_catppuccin').after()
+                         
+time([[Config for catppuccin]], false)
 -- Config for: telescope.nvim
 time([[Config for telescope.nvim]], true)
                          require('utils.api').safe_load(require('conf/plugins/nv_telescope'))
@@ -163,13 +191,6 @@ time([[Config for nvim-notify]], true)
                          require('conf/plugins/nv_nvim-notify').after()
                          
 time([[Config for nvim-notify]], false)
--- Config for: catppuccin
-time([[Config for catppuccin]], true)
-                         require('utils.api').safe_load(require('conf/plugins/nv_catppuccin'))
-                         require('conf/plugins/nv_catppuccin').load()
-                         require('conf/plugins/nv_catppuccin').after()
-                         
-time([[Config for catppuccin]], false)
 if should_profile then save_profiles() end
 
 end)
