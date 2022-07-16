@@ -6,6 +6,7 @@ local M = {
     safe_requires = {
         { "telescope" },
     },
+    telescope = nil
 }
 
 
@@ -39,11 +40,11 @@ function M.load()
 
     M.telescope.setup({
         defaults = {
-            -- prompt_prefix = " ",
-            -- selection_caret = " ",
-            -- entry_prefix = " ",
-            -- multi_icon = " ",
-            -- color_devicons = true,
+            prompt_prefix = " ",
+            selection_caret = " ",
+            entry_prefix = " ",
+            multi_icon = " ",
+            color_devicons = true,
             file_ignore_patterns = { "node_modules", "bin", "build" },
             -- theme
             layout_strategy = "bottom_pane",
@@ -130,6 +131,7 @@ function M.load()
 
         extensions_list = { "themes", "terms" },
     })
+
 end
 
 -- 用来解决通过find files进入新的buf中时无法使用折叠的bug
