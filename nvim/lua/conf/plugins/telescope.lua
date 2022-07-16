@@ -47,15 +47,15 @@ function M.load()
             color_devicons = true,
             file_ignore_patterns = { "node_modules", "bin", "build" },
             -- theme
-            layout_strategy = "bottom_pane",
+            -- layout_strategy = "dropdown",
             -- config
-            layout_config = {
-                bottom_pane = {
-                    height = 15,
-                    preview_cutoff = 100,
-                    prompt_position = "bottom",
-                },
-            },
+            -- layout_config = {
+            --     bottom_pane = {
+            --         height = 15,
+            --         preview_cutoff = 100,
+            --         prompt_position = "bottom",
+            --     },
+            -- },
             -- pickers = {
             --     find_files = {
             --         hidden = true,
@@ -122,13 +122,18 @@ function M.load()
 
         pickers = {
           find_files = {
-          theme = "dropdown",
-          previewer = false,
-          -- find_command = { "find", "-type", "f" },
-          find_command = { "fd", "-H" , "-I"},  -- "-H" search hidden files, "-I" do not respect to gitignore
+            theme = "dropdown",
+            -- previewer = true,
+            -- find_command = { "find", "-type", "f" },
+            find_command = { "fd", "-H" , "-I"},  -- "-H" search hidden files, "-I" do not respect to gitignore
           },
         },
 
+        extensions = {
+          projects = {
+            theme = "dropdown",
+          },
+        },
         extensions_list = { "themes", "terms" },
     })
 

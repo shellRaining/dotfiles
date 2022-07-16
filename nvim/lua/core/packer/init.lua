@@ -45,7 +45,7 @@ packer.startup({
             local plug_file_load_path = api.path.join(
                 "conf",
                 "plugins",
-                string.format("nv_%s", plug_file_name:lower())
+                string.format("%s", plug_file_name:lower())
             )
 
             local plug_file_disk_path = api.path.join(

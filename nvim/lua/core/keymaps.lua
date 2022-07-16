@@ -321,4 +321,18 @@ api.map.bulk_register({
       options = { silent = true },
       description = "Find all help document tags",
   },
+  {
+      mode = { "n" },
+      lhs = "<leader>fp",
+      rhs = ":Telescope projects<CR>",
+      options = { silent = true },
+      description = "Find projects with telescope",
+  },
+  {
+      mode = { "n" },
+      lhs = "<leader>fd",
+      rhs = ":TodoTelescope<CR>",
+      options = { silent = true },
+      description = "Find projects with telescope",
+  },
 })
