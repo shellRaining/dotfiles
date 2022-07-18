@@ -22,7 +22,7 @@ function hl.get(name, style)
     local ok, result = pcall(vim.api.nvim_get_hl_by_name, name, true)
 
     if not ok then
-        vim.notify(string.format("Failed to get hilight: %s", name), "INFO", { title = "hilight" })
+        vim.notify(string.format("Failed to get highlight: %s", name), "INFO", { title = "hilight" })
         return
     end
 

@@ -22,7 +22,7 @@ function api.safe_load(M)
 
         local ok, plugin = pcall(require, load_name)
         if not ok then
-            vim.notify(string.format("Faild to load plugin: %s", load_name), "WARN", { title = "plugin" })
+            vim.notify(string.format("Failed to load plugin: %s", load_name), "WARN", { title = "plugin" })
             return
         end
 

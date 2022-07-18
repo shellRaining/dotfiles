@@ -76,10 +76,58 @@ _G.packer_plugins = {
     path = "/home/lu/.local/share/nvim/site/pack/packer/opt/catppuccin",
     url = "https://github.com/askfiy/catppuccin"
   },
+  ["cmp-buffer"] = {
+    loaded = true,
+    path = "/home/lu/.local/share/nvim/site/pack/packer/start/cmp-buffer",
+    url = "https://github.com/hrsh7th/cmp-buffer"
+  },
+  ["cmp-cmdline"] = {
+    loaded = true,
+    path = "/home/lu/.local/share/nvim/site/pack/packer/start/cmp-cmdline",
+    url = "https://github.com/hrsh7th/cmp-cmdline"
+  },
+  ["cmp-nvim-lsp"] = {
+    loaded = true,
+    path = "/home/lu/.local/share/nvim/site/pack/packer/start/cmp-nvim-lsp",
+    url = "https://github.com/hrsh7th/cmp-nvim-lsp"
+  },
+  ["cmp-path"] = {
+    loaded = true,
+    path = "/home/lu/.local/share/nvim/site/pack/packer/start/cmp-path",
+    url = "https://github.com/hrsh7th/cmp-path"
+  },
+  ["cmp-tabnine"] = {
+    after_files = { "/home/lu/.local/share/nvim/site/pack/packer/opt/cmp-tabnine/after/plugin/cmp-tabnine.lua" },
+    load_after = {},
+    loaded = true,
+    needs_bufread = false,
+    path = "/home/lu/.local/share/nvim/site/pack/packer/opt/cmp-tabnine",
+    url = "https://github.com/tzachar/cmp-tabnine"
+  },
+  ["cmp-vsnip"] = {
+    loaded = true,
+    path = "/home/lu/.local/share/nvim/site/pack/packer/start/cmp-vsnip",
+    url = "https://github.com/hrsh7th/cmp-vsnip"
+  },
+  ["friendly-snippets"] = {
+    loaded = false,
+    needs_bufread = false,
+    only_cond = false,
+    path = "/home/lu/.local/share/nvim/site/pack/packer/opt/friendly-snippets",
+    url = "https://github.com/rafamadriz/friendly-snippets"
+  },
   ["lsp_signature.nvim"] = {
     loaded = true,
     path = "/home/lu/.local/share/nvim/site/pack/packer/start/lsp_signature.nvim",
     url = "https://github.com/ray-x/lsp_signature.nvim"
+  },
+  ["nvim-cmp"] = {
+    after = { "cmp-tabnine" },
+    config = { "                         require('utils.api').safe_load(require('conf/plugins/nvim-cmp'))\n                         require('conf/plugins/nvim-cmp').load()\n                         require('conf/plugins/nvim-cmp').after()\n                         " },
+    loaded = true,
+    needs_bufread = false,
+    path = "/home/lu/.local/share/nvim/site/pack/packer/opt/nvim-cmp",
+    url = "https://github.com/hrsh7th/nvim-cmp"
   },
   ["nvim-lightbulb"] = {
     loaded = true,
@@ -138,24 +186,17 @@ _G.packer_plugins = {
     needs_bufread = false,
     path = "/home/lu/.local/share/nvim/site/pack/packer/opt/todo-comments.nvim",
     url = "https://github.com/folke/todo-comments.nvim"
+  },
+  ["vim-vsnip"] = {
+    config = { "                         require('utils.api').safe_load(require('conf/plugins/vim-vsnip'))\n                         require('conf/plugins/vim-vsnip').load()\n                         require('conf/plugins/vim-vsnip').after()\n                         " },
+    loaded = true,
+    needs_bufread = false,
+    path = "/home/lu/.local/share/nvim/site/pack/packer/opt/vim-vsnip",
+    url = "https://github.com/hrsh7th/vim-vsnip"
   }
 }
 
 time([[Defining packer_plugins]], false)
--- Setup for: project.nvim
-time([[Setup for project.nvim]], true)
-require('conf/plugins/project').before()
-time([[Setup for project.nvim]], false)
-time([[packadd for project.nvim]], true)
-vim.cmd [[packadd project.nvim]]
-time([[packadd for project.nvim]], false)
--- Setup for: nvim-notify
-time([[Setup for nvim-notify]], true)
-require('conf/plugins/nvim-notify').before()
-time([[Setup for nvim-notify]], false)
-time([[packadd for nvim-notify]], true)
-vim.cmd [[packadd nvim-notify]]
-time([[packadd for nvim-notify]], false)
 -- Setup for: telescope.nvim
 time([[Setup for telescope.nvim]], true)
 require('conf/plugins/telescope').before()
@@ -177,20 +218,34 @@ time([[Setup for todo-comments.nvim]], false)
 time([[packadd for todo-comments.nvim]], true)
 vim.cmd [[packadd todo-comments.nvim]]
 time([[packadd for todo-comments.nvim]], false)
--- Config for: project.nvim
-time([[Config for project.nvim]], true)
-                         require('utils.api').safe_load(require('conf/plugins/project'))
-                         require('conf/plugins/project').load()
-                         require('conf/plugins/project').after()
-                         
-time([[Config for project.nvim]], false)
--- Config for: nvim-notify
-time([[Config for nvim-notify]], true)
-                         require('utils.api').safe_load(require('conf/plugins/nvim-notify'))
-                         require('conf/plugins/nvim-notify').load()
-                         require('conf/plugins/nvim-notify').after()
-                         
-time([[Config for nvim-notify]], false)
+-- Setup for: nvim-notify
+time([[Setup for nvim-notify]], true)
+require('conf/plugins/nvim-notify').before()
+time([[Setup for nvim-notify]], false)
+time([[packadd for nvim-notify]], true)
+vim.cmd [[packadd nvim-notify]]
+time([[packadd for nvim-notify]], false)
+-- Setup for: project.nvim
+time([[Setup for project.nvim]], true)
+require('conf/plugins/project').before()
+time([[Setup for project.nvim]], false)
+time([[packadd for project.nvim]], true)
+vim.cmd [[packadd project.nvim]]
+time([[packadd for project.nvim]], false)
+-- Setup for: vim-vsnip
+time([[Setup for vim-vsnip]], true)
+require('conf/plugins/vim-vsnip').before()
+time([[Setup for vim-vsnip]], false)
+time([[packadd for vim-vsnip]], true)
+vim.cmd [[packadd vim-vsnip]]
+time([[packadd for vim-vsnip]], false)
+-- Setup for: nvim-cmp
+time([[Setup for nvim-cmp]], true)
+require('conf/plugins/nvim-cmp').before()
+time([[Setup for nvim-cmp]], false)
+time([[packadd for nvim-cmp]], true)
+vim.cmd [[packadd nvim-cmp]]
+time([[packadd for nvim-cmp]], false)
 -- Config for: telescope.nvim
 time([[Config for telescope.nvim]], true)
                          require('utils.api').safe_load(require('conf/plugins/telescope'))
@@ -212,6 +267,46 @@ time([[Config for todo-comments.nvim]], true)
                          require('conf/plugins/todo-comments').after()
                          
 time([[Config for todo-comments.nvim]], false)
+-- Config for: nvim-notify
+time([[Config for nvim-notify]], true)
+                         require('utils.api').safe_load(require('conf/plugins/nvim-notify'))
+                         require('conf/plugins/nvim-notify').load()
+                         require('conf/plugins/nvim-notify').after()
+                         
+time([[Config for nvim-notify]], false)
+-- Config for: project.nvim
+time([[Config for project.nvim]], true)
+                         require('utils.api').safe_load(require('conf/plugins/project'))
+                         require('conf/plugins/project').load()
+                         require('conf/plugins/project').after()
+                         
+time([[Config for project.nvim]], false)
+-- Config for: vim-vsnip
+time([[Config for vim-vsnip]], true)
+                         require('utils.api').safe_load(require('conf/plugins/vim-vsnip'))
+                         require('conf/plugins/vim-vsnip').load()
+                         require('conf/plugins/vim-vsnip').after()
+                         
+time([[Config for vim-vsnip]], false)
+-- Config for: nvim-cmp
+time([[Config for nvim-cmp]], true)
+                         require('utils.api').safe_load(require('conf/plugins/nvim-cmp'))
+                         require('conf/plugins/nvim-cmp').load()
+                         require('conf/plugins/nvim-cmp').after()
+                         
+time([[Config for nvim-cmp]], false)
+-- Load plugins in order defined by `after`
+time([[Sequenced loading]], true)
+vim.cmd [[ packadd cmp-tabnine ]]
+time([[Sequenced loading]], false)
+vim.cmd [[augroup packer_load_aucmds]]
+vim.cmd [[au!]]
+  -- Event lazy-loads
+time([[Defining lazy-load event autocommands]], true)
+vim.cmd [[au CmdlineEnter * ++once lua require("packer.load")({'friendly-snippets'}, { event = "CmdlineEnter *" }, _G.packer_plugins)]]
+vim.cmd [[au InsertEnter * ++once lua require("packer.load")({'friendly-snippets'}, { event = "InsertEnter *" }, _G.packer_plugins)]]
+time([[Defining lazy-load event autocommands]], false)
+vim.cmd("augroup END")
 if should_profile then save_profiles() end
 
 end)
