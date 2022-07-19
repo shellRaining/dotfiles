@@ -739,3 +739,23 @@ api.map.bulk_register({
         description = "Jump to the prev word at the current cursor (forbidden range)",
     },
 })
+
+--------------------------------------------------------------------------------
+-- carbon now sh 相关设置
+--------------------------------------------------------------------------------
+api.map.bulk_register({
+    {
+        mode = { "v" },
+        lhs = "<leader>ci",
+        rhs = ":CarbonNowSh<cr>",
+        options = { silent = true },
+        description = "Code screenshot",
+    },
+    {
+        mode = { "n" },
+        lhs = "<leader>ci",
+        rhs = "ggVG:CarbonNowSh<cr>",
+        options = { silent = true },
+        description = "Code screenshot",
+    },
+})

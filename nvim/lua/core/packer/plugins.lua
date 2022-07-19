@@ -13,6 +13,7 @@ return {
   --------------------------------------------------------------------------------
   ["windwp/nvim-autopairs"] = { event = { "InsertEnter" }, },
   ["kevinhwang91/nvim-hlslens"] = { module = "hlslens", },
+  ["kristijanhusak/vim-carbon-now-sh"] = { cmd = { "CarbonNowSh" },},
 
 
   --------------------------------------------------------------------------------
