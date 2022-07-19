@@ -666,7 +666,7 @@ api.map.bulk_register({
     },
     {
         mode = { "n", "v" },
-        lhs = "<leader><leader>c",
+        lhs = "<leader><leader>f",
         rhs = "<cmd>HopChar1<cr>",
         options = { silent = true },
         description = "Jump to search char on buffer",

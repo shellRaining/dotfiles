@@ -9,6 +9,7 @@ return {
 
   --------------------------------------------------------------------------------
   -- editor enhance
+  -- which key nvim 由于存在一些bug暂不使用
   --------------------------------------------------------------------------------
   ["windwp/nvim-autopairs"] = { event = { "InsertEnter" }, },
   ["kevinhwang91/nvim-hlslens"] = { module = "hlslens", },
@@ -44,6 +45,9 @@ return {
   ["p00f/nvim-ts-rainbow"] = {},
   ["lewis6991/spellsitter.nvim"] = {},
   ["windwp/nvim-ts-autotag"] = {},
+  ["JoosepAlviste/nvim-ts-context-commentstring"] = {},
+  ["numToStr/Comment.nvim"] = { keys = { "gb", "gc" }, module = { "Comment" },},
+  ["tpope/vim-surround"] = {},
 
   --------------------------------------------------------------------------------
   -- telescope
