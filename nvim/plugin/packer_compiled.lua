@@ -70,8 +70,10 @@ time([[try_loadstring definition]], false)
 time([[Defining packer_plugins]], true)
 _G.packer_plugins = {
   ["bufferline.nvim"] = {
+    config = { "                         require('utils.api').safe_load(require('conf/plugins/bufferline'))\n                         require('conf/plugins/bufferline').load()\n                         require('conf/plugins/bufferline').after()\n                         " },
     loaded = true,
-    path = "/home/lu/.local/share/nvim/site/pack/packer/start/bufferline.nvim",
+    needs_bufread = false,
+    path = "/home/lu/.local/share/nvim/site/pack/packer/opt/bufferline.nvim",
     url = "https://github.com/akinsho/bufferline.nvim"
   },
   catppuccin = {
@@ -274,24 +276,13 @@ time([[Setup for catppuccin]], false)
 time([[packadd for catppuccin]], true)
 vim.cmd [[packadd catppuccin]]
 time([[packadd for catppuccin]], false)
--- Setup for: nvim-notify
-time([[Setup for nvim-notify]], true)
-require('conf/plugins/nvim-notify').before()
-time([[Setup for nvim-notify]], false)
-time([[packadd for nvim-notify]], true)
-vim.cmd [[packadd nvim-notify]]
-time([[packadd for nvim-notify]], false)
--- Setup for: vim-vsnip
-time([[Setup for vim-vsnip]], true)
-require('conf/plugins/vim-vsnip').before()
-time([[Setup for vim-vsnip]], false)
-time([[packadd for vim-vsnip]], true)
-vim.cmd [[packadd vim-vsnip]]
-time([[packadd for vim-vsnip]], false)
--- Setup for: gitsigns.nvim
-time([[Setup for gitsigns.nvim]], true)
-require('conf/plugins/gitsigns').before()
-time([[Setup for gitsigns.nvim]], false)
+-- Setup for: project.nvim
+time([[Setup for project.nvim]], true)
+require('conf/plugins/project').before()
+time([[Setup for project.nvim]], false)
+time([[packadd for project.nvim]], true)
+vim.cmd [[packadd project.nvim]]
+time([[packadd for project.nvim]], false)
 -- Setup for: telescope.nvim
 time([[Setup for telescope.nvim]], true)
 require('conf/plugins/telescope').before()
@@ -306,13 +297,24 @@ time([[Setup for nvim-cmp]], false)
 time([[packadd for nvim-cmp]], true)
 vim.cmd [[packadd nvim-cmp]]
 time([[packadd for nvim-cmp]], false)
--- Setup for: project.nvim
-time([[Setup for project.nvim]], true)
-require('conf/plugins/project').before()
-time([[Setup for project.nvim]], false)
-time([[packadd for project.nvim]], true)
-vim.cmd [[packadd project.nvim]]
-time([[packadd for project.nvim]], false)
+-- Setup for: gitsigns.nvim
+time([[Setup for gitsigns.nvim]], true)
+require('conf/plugins/gitsigns').before()
+time([[Setup for gitsigns.nvim]], false)
+-- Setup for: nvim-notify
+time([[Setup for nvim-notify]], true)
+require('conf/plugins/nvim-notify').before()
+time([[Setup for nvim-notify]], false)
+time([[packadd for nvim-notify]], true)
+vim.cmd [[packadd nvim-notify]]
+time([[packadd for nvim-notify]], false)
+-- Setup for: bufferline.nvim
+time([[Setup for bufferline.nvim]], true)
+require('conf/plugins/bufferline').before()
+time([[Setup for bufferline.nvim]], false)
+time([[packadd for bufferline.nvim]], true)
+vim.cmd [[packadd bufferline.nvim]]
+time([[packadd for bufferline.nvim]], false)
 -- Setup for: todo-comments.nvim
 time([[Setup for todo-comments.nvim]], true)
 require('conf/plugins/todo-comments').before()
@@ -320,6 +322,13 @@ time([[Setup for todo-comments.nvim]], false)
 time([[packadd for todo-comments.nvim]], true)
 vim.cmd [[packadd todo-comments.nvim]]
 time([[packadd for todo-comments.nvim]], false)
+-- Setup for: vim-vsnip
+time([[Setup for vim-vsnip]], true)
+require('conf/plugins/vim-vsnip').before()
+time([[Setup for vim-vsnip]], false)
+time([[packadd for vim-vsnip]], true)
+vim.cmd [[packadd vim-vsnip]]
+time([[packadd for vim-vsnip]], false)
 -- Config for: catppuccin
 time([[Config for catppuccin]], true)
                          require('utils.api').safe_load(require('conf/plugins/catppuccin'))
@@ -327,13 +336,6 @@ time([[Config for catppuccin]], true)
                          require('conf/plugins/catppuccin').after()
                          
 time([[Config for catppuccin]], false)
--- Config for: vim-vsnip
-time([[Config for vim-vsnip]], true)
-                         require('utils.api').safe_load(require('conf/plugins/vim-vsnip'))
-                         require('conf/plugins/vim-vsnip').load()
-                         require('conf/plugins/vim-vsnip').after()
-                         
-time([[Config for vim-vsnip]], false)
 -- Config for: nvim-notify
 time([[Config for nvim-notify]], true)
                          require('utils.api').safe_load(require('conf/plugins/nvim-notify'))
@@ -341,20 +343,6 @@ time([[Config for nvim-notify]], true)
                          require('conf/plugins/nvim-notify').after()
                          
 time([[Config for nvim-notify]], false)
--- Config for: telescope.nvim
-time([[Config for telescope.nvim]], true)
-                         require('utils.api').safe_load(require('conf/plugins/telescope'))
-                         require('conf/plugins/telescope').load()
-                         require('conf/plugins/telescope').after()
-                         
-time([[Config for telescope.nvim]], false)
--- Config for: nvim-cmp
-time([[Config for nvim-cmp]], true)
-                         require('utils.api').safe_load(require('conf/plugins/nvim-cmp'))
-                         require('conf/plugins/nvim-cmp').load()
-                         require('conf/plugins/nvim-cmp').after()
-                         
-time([[Config for nvim-cmp]], false)
 -- Config for: project.nvim
 time([[Config for project.nvim]], true)
                          require('utils.api').safe_load(require('conf/plugins/project'))
@@ -362,6 +350,27 @@ time([[Config for project.nvim]], true)
                          require('conf/plugins/project').after()
                          
 time([[Config for project.nvim]], false)
+-- Config for: bufferline.nvim
+time([[Config for bufferline.nvim]], true)
+                         require('utils.api').safe_load(require('conf/plugins/bufferline'))
+                         require('conf/plugins/bufferline').load()
+                         require('conf/plugins/bufferline').after()
+                         
+time([[Config for bufferline.nvim]], false)
+-- Config for: vim-vsnip
+time([[Config for vim-vsnip]], true)
+                         require('utils.api').safe_load(require('conf/plugins/vim-vsnip'))
+                         require('conf/plugins/vim-vsnip').load()
+                         require('conf/plugins/vim-vsnip').after()
+                         
+time([[Config for vim-vsnip]], false)
+-- Config for: telescope.nvim
+time([[Config for telescope.nvim]], true)
+                         require('utils.api').safe_load(require('conf/plugins/telescope'))
+                         require('conf/plugins/telescope').load()
+                         require('conf/plugins/telescope').after()
+                         
+time([[Config for telescope.nvim]], false)
 -- Config for: todo-comments.nvim
 time([[Config for todo-comments.nvim]], true)
                          require('utils.api').safe_load(require('conf/plugins/todo-comments'))
@@ -369,6 +378,13 @@ time([[Config for todo-comments.nvim]], true)
                          require('conf/plugins/todo-comments').after()
                          
 time([[Config for todo-comments.nvim]], false)
+-- Config for: nvim-cmp
+time([[Config for nvim-cmp]], true)
+                         require('utils.api').safe_load(require('conf/plugins/nvim-cmp'))
+                         require('conf/plugins/nvim-cmp').load()
+                         require('conf/plugins/nvim-cmp').after()
+                         
+time([[Config for nvim-cmp]], false)
 -- Load plugins in order defined by `after`
 time([[Sequenced loading]], true)
 vim.cmd [[ packadd cmp-tabnine ]]
@@ -377,10 +393,10 @@ vim.cmd [[augroup packer_load_aucmds]]
 vim.cmd [[au!]]
   -- Event lazy-loads
 time([[Defining lazy-load event autocommands]], true)
-vim.cmd [[au BufRead * ++once lua require("packer.load")({'vim-illuminate', 'gitsigns.nvim'}, { event = "BufRead *" }, _G.packer_plugins)]]
-vim.cmd [[au InsertEnter * ++once lua require("packer.load")({'nvim-autopairs', 'friendly-snippets'}, { event = "InsertEnter *" }, _G.packer_plugins)]]
 vim.cmd [[au BufNewFile * ++once lua require("packer.load")({'vim-illuminate', 'gitsigns.nvim'}, { event = "BufNewFile *" }, _G.packer_plugins)]]
+vim.cmd [[au InsertEnter * ++once lua require("packer.load")({'nvim-autopairs', 'friendly-snippets'}, { event = "InsertEnter *" }, _G.packer_plugins)]]
 vim.cmd [[au CmdlineEnter * ++once lua require("packer.load")({'friendly-snippets'}, { event = "CmdlineEnter *" }, _G.packer_plugins)]]
+vim.cmd [[au BufRead * ++once lua require("packer.load")({'vim-illuminate', 'gitsigns.nvim'}, { event = "BufRead *" }, _G.packer_plugins)]]
 time([[Defining lazy-load event autocommands]], false)
 vim.cmd("augroup END")
 if should_profile then save_profiles() end
