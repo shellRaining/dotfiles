@@ -6,9 +6,6 @@ return {
   ["rcarriga/nvim-notify"] = {},
   ["kyazdani42/nvim-web-devicons"] = { module = "nvim-web-devicons",},
   ["nvim-lua/plenary.nvim"] = { module = "plenary",},
-  ["kyazdani42/nvim-tree.lua"] = { cmd = { "NvimTreeToggle", "NvimTreeFindFile" },},
-  ["mbbill/undotree"] = { event = { "BufRead", "BufNewFile" },},
-  ["nvim-lualine/lualine.nvim"] = {},
 
   --------------------------------------------------------------------------------
   -- editor enhance
@@ -26,11 +23,14 @@ return {
   ["nvim-lualine/lualine.nvim"] = {},
   ["norcalli/nvim-colorizer.lua"] = {},
   ["RRethy/vim-illuminate"] = { event = { "BufRead", "BufNewFile" }, },
+  ["kyazdani42/nvim-tree.lua"] = { cmd = { "NvimTreeToggle", "NvimTreeFindFile" },},
+  ["mbbill/undotree"] = { event = { "BufRead", "BufNewFile" },},
+  ["nvim-lualine/lualine.nvim"] = {},
 
   --------------------------------------------------------------------------------
   -- lsp
   --------------------------------------------------------------------------------
-  ["neovim/nvim-lspconfig"] = {},
+  -- ["neovim/nvim-lspconfig"] = {},
   ["williamboman/nvim-lsp-installer"] = {},
   ["kosayoda/nvim-lightbulb"] = {},
   ["ray-x/lsp_signature.nvim"] = {},
@@ -48,12 +48,12 @@ return {
   -- telescope
   --------------------------------------------------------------------------------
   ["nvim-telescope/telescope.nvim"] = {},
-  ["ahmedkhalf/project.nvim"] = {},
   ["folke/todo-comments.nvim"] = {},
+  ["ahmedkhalf/project.nvim"] = {},
 
   --------------------------------------------------------------------------------
   -- cmp
-  -- WARN: 如果需要tabnine请手动到目录下运行脚本
+  -- WARN: 如果需要tabnine请手动到目录下运行脚本，其占用内存过大
   --------------------------------------------------------------------------------
   ["rafamadriz/friendly-snippets"] = { event = { "InsertEnter", "CmdlineEnter" }, },
   ["hrsh7th/vim-vsnip"] = {},
@@ -63,7 +63,7 @@ return {
   ["hrsh7th/cmp-cmdline"] = {},
   ["hrsh7th/cmp-nvim-lsp"] = {},
   ["hrsh7th/cmp-vsnip"] = {},
-  ["tzachar/cmp-tabnine"] = { run = "./install.sh", after = { "nvim-cmp" },},
+  -- ["tzachar/cmp-tabnine"] = { run = "./install.sh", after = { "nvim-cmp" },},
 
 
   --------------------------------------------------------------------------------

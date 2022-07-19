@@ -14,7 +14,7 @@ function M.load()
   project.setup({
     -- Manual mode doesn't automatically change your root directory, so you have
     -- the option to manually do so using `:ProjectRoot` command.
-    manual_mode = false,
+    -- manual_mode = false,
 
     -- Methods of detecting the root directory. **"lsp"** uses the native neovim
     -- lsp, while **"pattern"** uses vim-rooter like glob pattern matching. Here
@@ -28,11 +28,11 @@ function M.load()
 
     -- Table of lsp clients to ignore by name
     -- eg: { "efm", ... }
-    ignore_lsp = {},
+    -- ignore_lsp = {},
 
     -- Don't calculate root dir on specific directories
     -- Ex: { "~/.cargo/*", ... }
-    exclude_dirs = {},
+    -- exclude_dirs = {},
 
     -- Show hidden files in telescope
     show_hidden = true,
@@ -50,7 +50,7 @@ function M.load()
   if not tele_status_ok then
     return
   end
-
+  
   telescope.load_extension('projects')
 end
 
