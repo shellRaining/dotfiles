@@ -616,3 +616,59 @@ api.map.bulk_register({
         description = "Open Undo Explorer",
     },
 })
+
+
+--------------------------------------------------------------------------------
+-- hop 相关设置
+--------------------------------------------------------------------------------
+api.map.bulk_register({
+    {
+        mode = { "n", "v" },
+        lhs = "f",
+        rhs = "<cmd>lua require'hop'.hint_char1({ direction = require'hop.hint'.HintDirection.AFTER_CURSOR, current_line_only = true })<cr>",
+        options = { silent = true },
+        description = "Jump to word head",
+    },
+    {
+        mode = { "n", "v" },
+        lhs = "F",
+        rhs = "<cmd>lua require'hop'.hint_char1({ direction = require'hop.hint'.HintDirection.BEFORE_CURSOR, current_line_only = true })<cr>",
+        options = { silent = true },
+        description = "Jump to word head",
+    },
+    {
+        mode = {"o"},
+        lhs = "f",
+        rhs = "<cmd>lua require'hop'.hint_char1({ direction = require'hop.hint'.HintDirection.AFTER_CURSOR, current_line_only = true, inclusive_jump = true })<cr>",
+        options = { silent = true },
+        description = "Jump to word head",
+    },
+    {
+        mode = { "o" },
+        lhs = "F",
+        rhs = "<cmd>lua require'hop'.hint_char1({ direction = require'hop.hint'.HintDirection.BEFORE_CURSOR, current_line_only = true, inclusive_jump = true })<cr>",
+        options = { silent = true },
+        description = "Jump to word head",
+    },
+    {
+        mode = { "n", "v" },
+        lhs = "<leader>hw",
+        rhs = "<cmd>HopWord<cr>",
+        options = { silent = true },
+        description = "Jump to word head",
+    },
+    {
+        mode = { "n", "v" },
+        lhs = "<leader>hl",
+        rhs = "<cmd>HopLine<cr>",
+        options = { silent = true },
+        description = "Jump to line",
+    },
+    {
+        mode = { "n", "v" },
+        lhs = "<leader>hc",
+        rhs = "<cmd>HopChar1<cr>",
+        options = { silent = true },
+        description = "Jump to search char on buffer",
+    },
+})
