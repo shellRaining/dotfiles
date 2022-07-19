@@ -84,6 +84,30 @@ function M.load()
             ["<c-u>"] = M.cmp.mapping(M.cmp.mapping.scroll_docs(-5), { "i", "s", "c" }),
             ["<c-d>"] = M.cmp.mapping(M.cmp.mapping.scroll_docs(5), { "i", "s", "c" }),
             ["<cr>"] = M.cmp.mapping(M.cmp.mapping.confirm({ select = true }), { "i" }),
+            ["<Tab>"] = M.cmp.mapping(function(fallback)
+              if M.cmp.visible() then
+                M.cmp.select_next_item()
+              elseif luasnip.expandable() then
+                luasnip.expand()
+              elseif jumpable(1) then
+                luasnip.jump(1)
+              elseif check_backspace() then
+                fallback()
+              elseif is_emmet_active() then
+                return vim.fn["cmp#complete"]()
+              else
+                fallback()
+              end
+            end, {"c"}),
+            ["<S-Tab>"] = M.cmp.mapping(function(fallback)
+              if M.cmp.visible() then
+                M.cmp.select_prev_item()
+              elseif jumpable(-1) then
+                luasnip.jump(-1)
+              else
+                fallback()
+              end
+            end, {"c"}),
         },
         -- define sorting rules
         sorting = {

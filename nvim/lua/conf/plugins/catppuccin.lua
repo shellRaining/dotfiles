@@ -74,7 +74,7 @@ function M.load()
             neotree = {
                 enabled = false,
                 show_root = false,
-                transparent_panel = false,
+                transparent_panel = true,
             },
         },
     })

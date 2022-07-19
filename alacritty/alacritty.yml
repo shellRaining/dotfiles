@@ -106,8 +106,8 @@ font:
     y: 0
 window:
   padding:
-    x: 2
-    y: 2
+    x: 0
+    y: 0
   # scrolling:
   #   # Maximum number of lines in the scrollback buffer.
   #   # Specifying "0" will disable scrolling.
@@ -131,7 +131,7 @@ window:
   # - full: 有边界+标题栏
   # - none: 无边界+标题栏
   decorations: full
-  opacity: 0.8
+  opacity: 0.95
 
 
 

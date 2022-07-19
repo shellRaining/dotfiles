@@ -6,11 +6,15 @@ return {
   ["rcarriga/nvim-notify"] = {},
   ["kyazdani42/nvim-web-devicons"] = { module = "nvim-web-devicons",},
   ["nvim-lua/plenary.nvim"] = { module = "plenary",},
+  ["kyazdani42/nvim-tree.lua"] = { cmd = { "NvimTreeToggle", "NvimTreeFindFile" },},
+  ["mbbill/undotree"] = { event = { "BufRead", "BufNewFile" },},
+  ["nvim-lualine/lualine.nvim"] = {},
 
   --------------------------------------------------------------------------------
   -- editor enhance
   --------------------------------------------------------------------------------
   ["windwp/nvim-autopairs"] = { event = { "InsertEnter" }, },
+
 
   --------------------------------------------------------------------------------
   -- UI

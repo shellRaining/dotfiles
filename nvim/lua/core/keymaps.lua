@@ -569,3 +569,50 @@ api.map.bulk_register({
         description = "Go to buffer 9",
     },
 })
+
+
+--------------------------------------------------------------------------------
+-- nvim tree 相关设置
+--------------------------------------------------------------------------------
+api.map.bulk_register({
+    {
+        mode = { "n" },
+        lhs = "<leader>1",
+        rhs = function()
+            local aux_public = require("utils.aux.public")
+            aux_public.toggle_sidebar("NvimTree")
+            vim.cmd("NvimTreeToggle")
+        end,
+        options = { silent = true },
+        description = "Open File Explorer",
+    },
+    {
+        mode = { "n" },
+        lhs = "<leader>fc",
+        rhs = function()
+            local aux_public = require("utils.aux.public")
+            aux_public.toggle_sidebar("NvimTree")
+            vim.cmd("NvimTreeFindFile")
+        end,
+        options = { silent = true },
+        description = "Find the current file and open it in file explorer",
+    },
+})
+
+
+--------------------------------------------------------------------------------
+-- undotree 相关设置
+--------------------------------------------------------------------------------
+api.map.bulk_register({
+    {
+        mode = { "n" },
+        lhs = "<leader>3",
+        rhs = function()
+            local aux_public = require("utils.aux.public")
+            aux_public.toggle_sidebar("undotree")
+            vim.cmd("UndotreeToggle")
+        end,
+        options = { silent = true },
+        description = "Open Undo Explorer",
+    },
+})
