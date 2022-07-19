@@ -38,6 +38,11 @@ return {
   --------------------------------------------------------------------------------
   -- treesitter
   --------------------------------------------------------------------------------
+  ["nvim-treesitter/nvim-treesitter"] = { module = "nvim-treesitter", run = ":TSUpdate",},
+  ["lukas-reineke/indent-blankline.nvim"] = {},
+  ["p00f/nvim-ts-rainbow"] = {},
+  ["lewis6991/spellsitter.nvim"] = {},
+  ["windwp/nvim-ts-autotag"] = {},
 
   --------------------------------------------------------------------------------
   -- telescope
