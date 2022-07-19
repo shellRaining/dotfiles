@@ -69,6 +69,11 @@ end
 time([[try_loadstring definition]], false)
 time([[Defining packer_plugins]], true)
 _G.packer_plugins = {
+  ["bufferline.nvim"] = {
+    loaded = true,
+    path = "/home/lu/.local/share/nvim/site/pack/packer/start/bufferline.nvim",
+    url = "https://github.com/akinsho/bufferline.nvim"
+  },
   catppuccin = {
     config = { "                         require('utils.api').safe_load(require('conf/plugins/catppuccin'))\n                         require('conf/plugins/catppuccin').load()\n                         require('conf/plugins/catppuccin').after()\n                         " },
     loaded = true,
@@ -116,10 +121,30 @@ _G.packer_plugins = {
     path = "/home/lu/.local/share/nvim/site/pack/packer/opt/friendly-snippets",
     url = "https://github.com/rafamadriz/friendly-snippets"
   },
+  ["gitsigns.nvim"] = {
+    config = { "                         require('utils.api').safe_load(require('conf/plugins/gitsigns'))\n                         require('conf/plugins/gitsigns').load()\n                         require('conf/plugins/gitsigns').after()\n                         " },
+    loaded = false,
+    needs_bufread = false,
+    only_cond = false,
+    path = "/home/lu/.local/share/nvim/site/pack/packer/opt/gitsigns.nvim",
+    url = "https://github.com/lewis6991/gitsigns.nvim"
+  },
   ["lsp_signature.nvim"] = {
     loaded = true,
     path = "/home/lu/.local/share/nvim/site/pack/packer/start/lsp_signature.nvim",
     url = "https://github.com/ray-x/lsp_signature.nvim"
+  },
+  ["lualine.nvim"] = {
+    loaded = true,
+    path = "/home/lu/.local/share/nvim/site/pack/packer/start/lualine.nvim",
+    url = "https://github.com/nvim-lualine/lualine.nvim"
+  },
+  ["nvim-autopairs"] = {
+    loaded = false,
+    needs_bufread = false,
+    only_cond = false,
+    path = "/home/lu/.local/share/nvim/site/pack/packer/opt/nvim-autopairs",
+    url = "https://github.com/windwp/nvim-autopairs"
   },
   ["nvim-cmp"] = {
     after = { "cmp-tabnine" },
@@ -128,6 +153,11 @@ _G.packer_plugins = {
     needs_bufread = false,
     path = "/home/lu/.local/share/nvim/site/pack/packer/opt/nvim-cmp",
     url = "https://github.com/hrsh7th/nvim-cmp"
+  },
+  ["nvim-colorizer.lua"] = {
+    loaded = true,
+    path = "/home/lu/.local/share/nvim/site/pack/packer/start/nvim-colorizer.lua",
+    url = "https://github.com/norcalli/nvim-colorizer.lua"
   },
   ["nvim-lightbulb"] = {
     loaded = true,
@@ -152,8 +182,10 @@ _G.packer_plugins = {
     url = "https://github.com/rcarriga/nvim-notify"
   },
   ["nvim-web-devicons"] = {
-    loaded = true,
-    path = "/home/lu/.local/share/nvim/site/pack/packer/start/nvim-web-devicons",
+    loaded = false,
+    needs_bufread = false,
+    only_cond = false,
+    path = "/home/lu/.local/share/nvim/site/pack/packer/opt/nvim-web-devicons",
     url = "https://github.com/kyazdani42/nvim-web-devicons"
   },
   ["packer.nvim"] = {
@@ -162,8 +194,10 @@ _G.packer_plugins = {
     url = "https://github.com/wbthomason/packer.nvim"
   },
   ["plenary.nvim"] = {
-    loaded = true,
-    path = "/home/lu/.local/share/nvim/site/pack/packer/start/plenary.nvim",
+    loaded = false,
+    needs_bufread = false,
+    only_cond = false,
+    path = "/home/lu/.local/share/nvim/site/pack/packer/opt/plenary.nvim",
     url = "https://github.com/nvim-lua/plenary.nvim"
   },
   ["project.nvim"] = {
@@ -187,6 +221,13 @@ _G.packer_plugins = {
     path = "/home/lu/.local/share/nvim/site/pack/packer/opt/todo-comments.nvim",
     url = "https://github.com/folke/todo-comments.nvim"
   },
+  ["vim-illuminate"] = {
+    loaded = false,
+    needs_bufread = false,
+    only_cond = false,
+    path = "/home/lu/.local/share/nvim/site/pack/packer/opt/vim-illuminate",
+    url = "https://github.com/RRethy/vim-illuminate"
+  },
   ["vim-vsnip"] = {
     config = { "                         require('utils.api').safe_load(require('conf/plugins/vim-vsnip'))\n                         require('conf/plugins/vim-vsnip').load()\n                         require('conf/plugins/vim-vsnip').after()\n                         " },
     loaded = true,
@@ -197,13 +238,35 @@ _G.packer_plugins = {
 }
 
 time([[Defining packer_plugins]], false)
--- Setup for: telescope.nvim
-time([[Setup for telescope.nvim]], true)
-require('conf/plugins/telescope').before()
-time([[Setup for telescope.nvim]], false)
-time([[packadd for telescope.nvim]], true)
-vim.cmd [[packadd telescope.nvim]]
-time([[packadd for telescope.nvim]], false)
+local module_lazy_loads = {
+  ["^nvim%-web%-devicons"] = "nvim-web-devicons",
+  ["^plenary"] = "plenary.nvim"
+}
+local lazy_load_called = {['packer.load'] = true}
+local function lazy_load_module(module_name)
+  local to_load = {}
+  if lazy_load_called[module_name] then return nil end
+  lazy_load_called[module_name] = true
+  for module_pat, plugin_name in pairs(module_lazy_loads) do
+    if not _G.packer_plugins[plugin_name].loaded and string.match(module_name, module_pat) then
+      to_load[#to_load + 1] = plugin_name
+    end
+  end
+
+  if #to_load > 0 then
+    require('packer.load')(to_load, {module = module_name}, _G.packer_plugins)
+    local loaded_mod = package.loaded[module_name]
+    if loaded_mod then
+      return function(modname) return loaded_mod end
+    end
+  end
+end
+
+if not vim.g.packer_custom_loader_enabled then
+  table.insert(package.loaders, 1, lazy_load_module)
+  vim.g.packer_custom_loader_enabled = true
+end
+
 -- Setup for: catppuccin
 time([[Setup for catppuccin]], true)
 require('conf/plugins/catppuccin').before()
@@ -211,13 +274,6 @@ time([[Setup for catppuccin]], false)
 time([[packadd for catppuccin]], true)
 vim.cmd [[packadd catppuccin]]
 time([[packadd for catppuccin]], false)
--- Setup for: todo-comments.nvim
-time([[Setup for todo-comments.nvim]], true)
-require('conf/plugins/todo-comments').before()
-time([[Setup for todo-comments.nvim]], false)
-time([[packadd for todo-comments.nvim]], true)
-vim.cmd [[packadd todo-comments.nvim]]
-time([[packadd for todo-comments.nvim]], false)
 -- Setup for: nvim-notify
 time([[Setup for nvim-notify]], true)
 require('conf/plugins/nvim-notify').before()
@@ -225,13 +281,6 @@ time([[Setup for nvim-notify]], false)
 time([[packadd for nvim-notify]], true)
 vim.cmd [[packadd nvim-notify]]
 time([[packadd for nvim-notify]], false)
--- Setup for: project.nvim
-time([[Setup for project.nvim]], true)
-require('conf/plugins/project').before()
-time([[Setup for project.nvim]], false)
-time([[packadd for project.nvim]], true)
-vim.cmd [[packadd project.nvim]]
-time([[packadd for project.nvim]], false)
 -- Setup for: vim-vsnip
 time([[Setup for vim-vsnip]], true)
 require('conf/plugins/vim-vsnip').before()
@@ -239,6 +288,17 @@ time([[Setup for vim-vsnip]], false)
 time([[packadd for vim-vsnip]], true)
 vim.cmd [[packadd vim-vsnip]]
 time([[packadd for vim-vsnip]], false)
+-- Setup for: gitsigns.nvim
+time([[Setup for gitsigns.nvim]], true)
+require('conf/plugins/gitsigns').before()
+time([[Setup for gitsigns.nvim]], false)
+-- Setup for: telescope.nvim
+time([[Setup for telescope.nvim]], true)
+require('conf/plugins/telescope').before()
+time([[Setup for telescope.nvim]], false)
+time([[packadd for telescope.nvim]], true)
+vim.cmd [[packadd telescope.nvim]]
+time([[packadd for telescope.nvim]], false)
 -- Setup for: nvim-cmp
 time([[Setup for nvim-cmp]], true)
 require('conf/plugins/nvim-cmp').before()
@@ -246,13 +306,20 @@ time([[Setup for nvim-cmp]], false)
 time([[packadd for nvim-cmp]], true)
 vim.cmd [[packadd nvim-cmp]]
 time([[packadd for nvim-cmp]], false)
--- Config for: telescope.nvim
-time([[Config for telescope.nvim]], true)
-                         require('utils.api').safe_load(require('conf/plugins/telescope'))
-                         require('conf/plugins/telescope').load()
-                         require('conf/plugins/telescope').after()
-                         
-time([[Config for telescope.nvim]], false)
+-- Setup for: project.nvim
+time([[Setup for project.nvim]], true)
+require('conf/plugins/project').before()
+time([[Setup for project.nvim]], false)
+time([[packadd for project.nvim]], true)
+vim.cmd [[packadd project.nvim]]
+time([[packadd for project.nvim]], false)
+-- Setup for: todo-comments.nvim
+time([[Setup for todo-comments.nvim]], true)
+require('conf/plugins/todo-comments').before()
+time([[Setup for todo-comments.nvim]], false)
+time([[packadd for todo-comments.nvim]], true)
+vim.cmd [[packadd todo-comments.nvim]]
+time([[packadd for todo-comments.nvim]], false)
 -- Config for: catppuccin
 time([[Config for catppuccin]], true)
                          require('utils.api').safe_load(require('conf/plugins/catppuccin'))
@@ -260,27 +327,6 @@ time([[Config for catppuccin]], true)
                          require('conf/plugins/catppuccin').after()
                          
 time([[Config for catppuccin]], false)
--- Config for: todo-comments.nvim
-time([[Config for todo-comments.nvim]], true)
-                         require('utils.api').safe_load(require('conf/plugins/todo-comments'))
-                         require('conf/plugins/todo-comments').load()
-                         require('conf/plugins/todo-comments').after()
-                         
-time([[Config for todo-comments.nvim]], false)
--- Config for: nvim-notify
-time([[Config for nvim-notify]], true)
-                         require('utils.api').safe_load(require('conf/plugins/nvim-notify'))
-                         require('conf/plugins/nvim-notify').load()
-                         require('conf/plugins/nvim-notify').after()
-                         
-time([[Config for nvim-notify]], false)
--- Config for: project.nvim
-time([[Config for project.nvim]], true)
-                         require('utils.api').safe_load(require('conf/plugins/project'))
-                         require('conf/plugins/project').load()
-                         require('conf/plugins/project').after()
-                         
-time([[Config for project.nvim]], false)
 -- Config for: vim-vsnip
 time([[Config for vim-vsnip]], true)
                          require('utils.api').safe_load(require('conf/plugins/vim-vsnip'))
@@ -288,6 +334,20 @@ time([[Config for vim-vsnip]], true)
                          require('conf/plugins/vim-vsnip').after()
                          
 time([[Config for vim-vsnip]], false)
+-- Config for: nvim-notify
+time([[Config for nvim-notify]], true)
+                         require('utils.api').safe_load(require('conf/plugins/nvim-notify'))
+                         require('conf/plugins/nvim-notify').load()
+                         require('conf/plugins/nvim-notify').after()
+                         
+time([[Config for nvim-notify]], false)
+-- Config for: telescope.nvim
+time([[Config for telescope.nvim]], true)
+                         require('utils.api').safe_load(require('conf/plugins/telescope'))
+                         require('conf/plugins/telescope').load()
+                         require('conf/plugins/telescope').after()
+                         
+time([[Config for telescope.nvim]], false)
 -- Config for: nvim-cmp
 time([[Config for nvim-cmp]], true)
                          require('utils.api').safe_load(require('conf/plugins/nvim-cmp'))
@@ -295,6 +355,20 @@ time([[Config for nvim-cmp]], true)
                          require('conf/plugins/nvim-cmp').after()
                          
 time([[Config for nvim-cmp]], false)
+-- Config for: project.nvim
+time([[Config for project.nvim]], true)
+                         require('utils.api').safe_load(require('conf/plugins/project'))
+                         require('conf/plugins/project').load()
+                         require('conf/plugins/project').after()
+                         
+time([[Config for project.nvim]], false)
+-- Config for: todo-comments.nvim
+time([[Config for todo-comments.nvim]], true)
+                         require('utils.api').safe_load(require('conf/plugins/todo-comments'))
+                         require('conf/plugins/todo-comments').load()
+                         require('conf/plugins/todo-comments').after()
+                         
+time([[Config for todo-comments.nvim]], false)
 -- Load plugins in order defined by `after`
 time([[Sequenced loading]], true)
 vim.cmd [[ packadd cmp-tabnine ]]
@@ -303,8 +377,10 @@ vim.cmd [[augroup packer_load_aucmds]]
 vim.cmd [[au!]]
   -- Event lazy-loads
 time([[Defining lazy-load event autocommands]], true)
+vim.cmd [[au BufRead * ++once lua require("packer.load")({'vim-illuminate', 'gitsigns.nvim'}, { event = "BufRead *" }, _G.packer_plugins)]]
+vim.cmd [[au InsertEnter * ++once lua require("packer.load")({'nvim-autopairs', 'friendly-snippets'}, { event = "InsertEnter *" }, _G.packer_plugins)]]
+vim.cmd [[au BufNewFile * ++once lua require("packer.load")({'vim-illuminate', 'gitsigns.nvim'}, { event = "BufNewFile *" }, _G.packer_plugins)]]
 vim.cmd [[au CmdlineEnter * ++once lua require("packer.load")({'friendly-snippets'}, { event = "CmdlineEnter *" }, _G.packer_plugins)]]
-vim.cmd [[au InsertEnter * ++once lua require("packer.load")({'friendly-snippets'}, { event = "InsertEnter *" }, _G.packer_plugins)]]
 time([[Defining lazy-load event autocommands]], false)
 vim.cmd("augroup END")
 if should_profile then save_profiles() end

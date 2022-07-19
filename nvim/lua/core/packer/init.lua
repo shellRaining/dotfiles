@@ -1,5 +1,5 @@
 local api = require("utils.api")
--- local aux_lsp = require("utils.aux.lsp")
+local aux_lsp = require("utils.aux.lsp")
 local options = require("core.options")
 local plugins_installer_table = require("core.packer.plugins")
 
@@ -78,5 +78,24 @@ packer.startup({
 })
 
 local packer_user_config = vim.api.nvim_create_augroup("packer_user_config", { clear = true })
+
+vim.api.nvim_create_autocmd({ "BufWritePre" }, {
+    pattern = { "plugins.lua" },
+    callback = function()
+        -- multiple reloads will increase memory usage, so stop some LSP servers before reloading
+        -- but this may cause some error messages
+        local active_clients, ignore_lsp = aux_lsp.get_active_lsp_clients()
+        for _, client in pairs(active_clients) do
+            if not vim.tbl_contains(ignore_lsp, client.name) then
+                pcall(vim.lsp.stop_client, client, true)
+            end
+        end
+
+        -- overload
+        vim.cmd("source <afile>")
+        vim.cmd("PackerCompile")
+    end,
+    group = packer_user_config,
+})
 
 return packer

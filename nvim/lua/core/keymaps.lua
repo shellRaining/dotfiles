@@ -184,6 +184,7 @@ api.map.bulk_register({
     },
 })
 
+
 --------------------------------------------------------------------------------
 -- 方便进行分屏的快捷键
 --------------------------------------------------------------------------------
@@ -281,6 +282,7 @@ api.map.bulk_register({
     },
 })
 
+
 --------------------------------------------------------------------------------
 -- telescope 相关设置
 --------------------------------------------------------------------------------
@@ -335,4 +337,74 @@ api.map.bulk_register({
       options = { silent = true },
       description = "Find projects with telescope",
   },
+})
+
+
+--------------------------------------------------------------------------------
+-- gitsigns 相关设置
+--------------------------------------------------------------------------------
+api.map.bulk_register({
+    {
+        mode = { "n" },
+        lhs = "[c",
+        rhs = "&diff ? '[c' : '<cmd>Gitsigns prev_hunk<cr>'",
+        options = { silent = true, expr = true },
+        description = "Jump to the prev hunk",
+    },
+    {
+        mode = { "n" },
+        lhs = "]c",
+        rhs = "&diff ? ']c' : '<cmd>Gitsigns next_hunk<cr>'",
+        options = { silent = true, expr = true },
+        description = "Jump to the next hunk",
+    },
+    {
+        mode = { "n" },
+        lhs = "<leader>gl",
+        rhs = "<cmd>Gitsigns toggle_current_line_blame<cr>",
+        options = { silent = true },
+        description = "Toggle current line blame",
+    },
+    {
+        mode = { "n" },
+        lhs = "<leader>gh",
+        rhs = "<cmd>lua require'gitsigns'.preview_hunk()<cr>",
+        options = { silent = true },
+        description = "Preview current hunk",
+    },
+    {
+        mode = { "n" },
+        lhs = "<leader>gH",
+        rhs = "<cmd>lua require'gitsigns'.blame_line{full=true}<cr>",
+        options = { silent = true },
+        description = "Show current block blame",
+    },
+    {
+        mode = { "n" },
+        lhs = "<leader>gd",
+        rhs = "<cmd>Gitsigns diffthis<cr>",
+        options = { silent = true },
+        description = "Open deff view",
+    },
+    {
+        mode = { "n" },
+        lhs = "<leader>gD",
+        rhs = "<cmd>Gitsigns toggle_deleted<cr>",
+        options = { silent = true },
+        description = "Show deleted lines",
+    },
+    {
+        mode = { "n", "v" },
+        lhs = "<leader>gr",
+        rhs = "<cmd>Gitsigns reset_hunk<cr>",
+        options = { silent = true },
+        description = "Reset current hunk",
+    },
+    {
+        mode = { "n" },
+        lhs = "<leader>gR",
+        rhs = "<cmd>Gitsigns reset_buffer<cr>",
+        options = { silent = true },
+        description = "Reset current buffer",
+    },
 })
