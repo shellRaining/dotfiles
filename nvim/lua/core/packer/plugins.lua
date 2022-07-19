@@ -14,6 +14,7 @@ return {
   ["windwp/nvim-autopairs"] = { event = { "InsertEnter" }, },
   ["kevinhwang91/nvim-hlslens"] = { module = "hlslens", },
   ["kristijanhusak/vim-carbon-now-sh"] = { cmd = { "CarbonNowSh" },},
+  ["uga-rosa/translate.nvim"] = { cmd = { "Translate" },},
 
 
   --------------------------------------------------------------------------------
@@ -29,6 +30,7 @@ return {
   ["kyazdani42/nvim-tree.lua"] = { cmd = { "NvimTreeToggle", "NvimTreeFindFile" },},
   ["mbbill/undotree"] = { event = { "BufRead", "BufNewFile" },},
   ["nvim-lualine/lualine.nvim"] = {},
+  ["akinsho/toggleterm.nvim"] = { module = "toggleterm", },
 
   --------------------------------------------------------------------------------
   -- lsp

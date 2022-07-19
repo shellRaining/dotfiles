@@ -759,3 +759,159 @@ api.map.bulk_register({
         description = "Code screenshot",
     },
 })
+
+--------------------------------------------------------------------------------
+-- translate 方便编辑的映射
+--------------------------------------------------------------------------------
+api.map.bulk_register({
+    {
+        mode = { "n", "v" },
+        lhs = "<leader>tcs",
+        rhs = ":Translate ZH -source=EN -output=split<cr>",
+        options = { silent = true },
+        description = "Translate English to Chinese and open in split window",
+    },
+    {
+        mode = { "n", "v" },
+        lhs = "<leader>tcr",
+        rhs = ":Translate ZH -source=EN -output=replace<cr>",
+        options = { silent = true },
+        description = "Translate English to Chinese and replace English",
+    },
+    {
+        mode = { "n", "v" },
+        lhs = "<leader>ts",
+        rhs = ":Translate ZH -source=EN -output=floating<cr>",
+        options = { silent = true },
+        description = "Translate English to Chinese and open in float window",
+    },
+    {
+        mode = { "n", "v" },
+        lhs = "<leader>tci",
+        rhs = ":Translate ZH -source=EN -output=insert<cr>",
+        options = { silent = true },
+        description = "Translate English to Chinese and insert to next line",
+    },
+    {
+        mode = { "n", "v" },
+        lhs = "<leader>tcc",
+        rhs = ":Translate ZH -source=EN -output=register<cr>",
+        options = { silent = true },
+        description = "Translate English to Chinese and copy result to clipboard",
+    },
+    {
+        mode = { "n" },
+        lhs = "<leader>tcb",
+        rhs = ":Translate ZH -source=EN -output=floating -comment<cr>",
+        options = { silent = true },
+        description = "Translate English comment to Chinese and open in float window",
+    },
+    {
+        mode = { "n" },
+        lhs = "<leader>tcw",
+        rhs = ":normal! viw<cr>:Translate ZH -source=EN -output=floating<cr>",
+        options = { silent = true },
+        description = "Translate English word to Chinese and open in float window",
+    },
+    {
+        mode = { "n", "v" },
+        lhs = "<leader>tes",
+        rhs = ":Translate EN -source=ZH -output=split<cr>",
+        options = { silent = true },
+        description = "Translate Chinese to English and open in split window",
+    },
+    {
+        mode = { "n", "v" },
+        lhs = "<leader>ter",
+        rhs = ":Translate EN -source=ZH -output=replace<cr>",
+        options = { silent = true },
+        description = "Translate Chinese to English and replace Chinese",
+    },
+    {
+        mode = { "n", "v" },
+        lhs = "<leader>tef",
+        rhs = ":Translate EN -source=ZH -output=floating<cr>",
+        options = { silent = true },
+        description = "Translate Chinese to English and open in float window",
+    },
+    {
+        mode = { "n", "v" },
+        lhs = "<leader>tei",
+        rhs = ":Translate EN -source=ZH -output=insert<cr>",
+        options = { silent = true },
+        description = "Translate Chinese to English and insert to next line",
+    },
+    {
+        mode = { "n", "v" },
+        lhs = "<leader>tec",
+        rhs = ":Translate EN -source=ZH -output=register<cr>",
+        options = { silent = true },
+        description = "Translate Chinese to English and copy result to clipboard",
+    },
+    {
+        mode = { "n" },
+        lhs = "<leader>teb",
+        rhs = ":Translate EN -source=ZH -output=floating -comment<cr>",
+        options = { silent = true },
+        description = "Translate Chinese comment to English and open in float window",
+    },
+    {
+        mode = { "n" },
+        lhs = "<leader>tew",
+        rhs = ":normal! viw<cr>:Translate EN -source=ZH -output=floating<cr>",
+        options = { silent = true },
+        description = "Translate Chinese word to English and open in float window",
+    },
+})
+
+--------------------------------------------------------------------------------
+-- toggleTerm 的映射
+--------------------------------------------------------------------------------
+api.map.bulk_register({
+    {
+        mode = { "n" },
+        lhs = "<leader>tt",
+        rhs = function()
+            require("toggleterm").term_toggle()
+        end,
+        options = { silent = true },
+        description = "Toggle bottom or vertical terminal",
+    },
+    {
+        mode = { "n" },
+        lhs = "<leader>3",
+        rhs = function()
+            require("toggleterm").float_toggle()
+        end,
+
+        options = { silent = true },
+        description = "Toggle floating terminal",
+    },
+    {
+        mode = { "n" },
+        lhs = "<leader>tv",
+        rhs = function()
+            require("toggleterm").vertical_toggle()
+        end,
+        options = { silent = true },
+        description = "Toggle vertical terminal",
+    },
+    {
+        mode = { "n" },
+        lhs = "<leader>tg",
+        rhs = function()
+            require("toggleterm").lazygit_toggle()
+        end,
+        options = { silent = true },
+        description = "Toggle lazygit terminal",
+    },
+    {
+        mode = { "n" },
+        lhs = "<leader>ta",
+        rhs = function()
+            require("toggleterm").toggle_all_term()
+        end,
+        options = { silent = true },
+        description = "Toggle all terminal",
+    },
+})
