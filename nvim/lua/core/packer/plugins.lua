@@ -36,9 +36,11 @@ return {
   -- lsp
   --------------------------------------------------------------------------------
   -- ["neovim/nvim-lspconfig"] = {},
-  ["williamboman/nvim-lsp-installer"] = {},
-  ["kosayoda/nvim-lightbulb"] = {},
-  ["ray-x/lsp_signature.nvim"] = {},
+  -- ["williamboman/nvim-lsp-installer"] = {},
+  -- ["stevearc/aerial.nvim"] = {},
+  -- ["jose-elias-alvarez/null-ls.nvim"] = { after = { "nvim-lsp-installer" }, },
+  -- ["kosayoda/nvim-lightbulb"] = {},
+  -- ["ray-x/lsp_signature.nvim"] = {},
 
   --------------------------------------------------------------------------------
   -- treesitter
@@ -77,5 +79,6 @@ return {
   --------------------------------------------------------------------------------
   -- jump in text
   --------------------------------------------------------------------------------
+  -- TODO: 关于f的用法还有存疑
   ["phaazon/hop.nvim"] = { cmd = { "HopWord", "HopLine", "HopChar1", "HopChar1CurrentLine" },},
 }

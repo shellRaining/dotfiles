@@ -1,4 +1,5 @@
 local api = require("utils.api")
+
 --------------------------------------------------------------------------------
 -- vim方便编辑的映射
 --------------------------------------------------------------------------------
@@ -183,6 +184,7 @@ api.map.bulk_register({
         description = "Move cursor right in insert mode",
     },
 })
+
 
 
 --------------------------------------------------------------------------------
@@ -451,59 +453,10 @@ api.map.bulk_register({
     },
     {
         mode = { "n" },
-        lhs = "<leader>bn",
-        rhs = "<cmd>enew<cr>",
-        options = { silent = true },
-        description = "Create new buffer",
-    },
-    {
-        mode = { "n" },
-        lhs = "<leader>bh",
-        rhs = "<cmd>BufferLineCloseLeft<cr>",
-        options = { silent = true },
-        description = "Close all left buffers",
-    },
-    {
-        mode = { "n" },
-        lhs = "<leader>bl",
-        rhs = "<cmd>BufferLineCloseRight<cr>",
-        options = { silent = true },
-        description = "Close all right buffers",
-    },
-    {
-        mode = { "n" },
-        lhs = "<leader>bo",
-        rhs = function()
-            vim.cmd("BufferLineCloseLeft")
-            vim.cmd("BufferLineCloseRight")
-        end,
-        options = { silent = true },
-        description = "Close all other buffers",
-    },
-    {
-        mode = { "n" },
-        lhs = "<leader>ba",
-        rhs = function()
-            vim.cmd("BufferLineCloseLeft")
-            vim.cmd("BufferLineCloseRight")
-            vim.cmd("BufferDelete")
-        end,
-        options = { silent = true },
-        description = "Close all buffers",
-    },
-    {
-        mode = { "n" },
         lhs = "<leader>bt",
         rhs = "<cmd>BufferLinePick<cr>",
         options = { silent = true },
         description = "Go to buffer *",
-    },
-    {
-        mode = { "n" },
-        lhs = "<leader>bs",
-        rhs = "<cmd>BufferLineSortByExtension<cr>",
-        options = { silent = true },
-        description = "Buffers sort (by extension)",
     },
     {
         mode = { "n" },
@@ -586,17 +539,6 @@ api.map.bulk_register({
         options = { silent = true },
         description = "Open File Explorer",
     },
-    {
-        mode = { "n" },
-        lhs = "<leader>fc",
-        rhs = function()
-            local aux_public = require("utils.aux.public")
-            aux_public.toggle_sidebar("NvimTree")
-            vim.cmd("NvimTreeFindFile")
-        end,
-        options = { silent = true },
-        description = "Find the current file and open it in file explorer",
-    },
 })
 
 
@@ -606,7 +548,7 @@ api.map.bulk_register({
 api.map.bulk_register({
     {
         mode = { "n" },
-        lhs = "<leader>3",
+        lhs = "<leader>2",
         rhs = function()
             local aux_public = require("utils.aux.public")
             aux_public.toggle_sidebar("undotree")
@@ -622,34 +564,6 @@ api.map.bulk_register({
 -- hop 相关设置
 --------------------------------------------------------------------------------
 api.map.bulk_register({
-    {
-        mode = { "n", "v" },
-        lhs = "f",
-        rhs = "<cmd>lua require'hop'.hint_char1({ direction = require'hop.hint'.HintDirection.AFTER_CURSOR, current_line_only = true })<cr>",
-        options = { silent = true },
-        description = "Jump to word head",
-    },
-    {
-        mode = { "n", "v" },
-        lhs = "F",
-        rhs = "<cmd>lua require'hop'.hint_char1({ direction = require'hop.hint'.HintDirection.BEFORE_CURSOR, current_line_only = true })<cr>",
-        options = { silent = true },
-        description = "Jump to word head",
-    },
-    {
-        mode = {"o"},
-        lhs = "f",
-        rhs = "<cmd>lua require'hop'.hint_char1({ direction = require'hop.hint'.HintDirection.AFTER_CURSOR, current_line_only = true, inclusive_jump = true })<cr>",
-        options = { silent = true },
-        description = "Jump to word head",
-    },
-    {
-        mode = { "o" },
-        lhs = "F",
-        rhs = "<cmd>lua require'hop'.hint_char1({ direction = require'hop.hint'.HintDirection.BEFORE_CURSOR, current_line_only = true, inclusive_jump = true })<cr>",
-        options = { silent = true },
-        description = "Jump to word head",
-    },
     {
         mode = { "n", "v" },
         lhs = "<leader><leader>w",
@@ -674,7 +588,7 @@ api.map.bulk_register({
 })
 
 --------------------------------------------------------------------------------
--- hlslens 相关设置
+-- hlslens
 --------------------------------------------------------------------------------
 api.map.bulk_register({
     {
@@ -741,19 +655,19 @@ api.map.bulk_register({
 })
 
 --------------------------------------------------------------------------------
--- carbon now sh 相关设置
+-- carbon now sh
 --------------------------------------------------------------------------------
 api.map.bulk_register({
     {
         mode = { "v" },
-        lhs = "<leader>ci",
+        lhs = "<leader>cn",
         rhs = ":CarbonNowSh<cr>",
         options = { silent = true },
         description = "Code screenshot",
     },
     {
         mode = { "n" },
-        lhs = "<leader>ci",
+        lhs = "<leader>cn",
         rhs = "ggVG:CarbonNowSh<cr>",
         options = { silent = true },
         description = "Code screenshot",
@@ -761,7 +675,7 @@ api.map.bulk_register({
 })
 
 --------------------------------------------------------------------------------
--- translate 方便编辑的映射
+-- translate
 --------------------------------------------------------------------------------
 api.map.bulk_register({
     {

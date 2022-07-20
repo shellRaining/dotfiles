@@ -1,10 +1,13 @@
-# User configuration
+#! /bin/zsh
 
 # ================================================================================
 # proxy
 # ================================================================================
-export http_proxy=http://127.0.0.1:7890
-export https_proxy=http://127.0.0.1:7890
+sysName=`uname`
+if [[ "$sysName"=="Linux" ]] {
+  export http_proxy=http://127.0.0.1:7890
+  export https_proxy=http://127.0.0.1:7890
+}
 
 
 # ================================================================================
@@ -16,7 +19,7 @@ export EDITOR='nvim'
 # path
 # ================================================================================
 path=('/opt/homebrew/bin' $path)
-PATH=$PATH:/usr/local/mysql/bin:/usr/bin:~/dotfiles/bin:~/llvm-project/build/bin
+PATH=$PATH:/usr/local/mysql/bin:/usr/bin:~/dotfiles/bin
 export PATH
 
 # ================================================================================
