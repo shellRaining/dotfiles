@@ -130,8 +130,8 @@ window:
   # 窗口修饰
   # - full: 有边界+标题栏
   # - none: 无边界+标题栏
-  decorations: full
-  opacity: 0.92
+  decorations: none
+  opacity: 0.94
 
 
 
