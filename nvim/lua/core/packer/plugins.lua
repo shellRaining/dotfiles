@@ -34,8 +34,8 @@ return {
   --------------------------------------------------------------------------------
   -- lsp
   --------------------------------------------------------------------------------
-  -- ["neovim/nvim-lspconfig"] = {},
-  -- ["williamboman/nvim-lsp-installer"] = {},
+  ["neovim/nvim-lspconfig"] = {},
+  ["williamboman/nvim-lsp-installer"] = {},
   -- ["stevearc/aerial.nvim"] = {},
   -- ["jose-elias-alvarez/null-ls.nvim"] = { after = { "nvim-lsp-installer" }, },
   -- ["kosayoda/nvim-lightbulb"] = {},
