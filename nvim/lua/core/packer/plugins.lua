@@ -30,7 +30,6 @@ return {
   ["kyazdani42/nvim-tree.lua"] = { cmd = { "NvimTreeToggle", "NvimTreeFindFile" },},
   ["mbbill/undotree"] = { event = { "BufRead", "BufNewFile" },},
   ["nvim-lualine/lualine.nvim"] = {},
-  ["akinsho/toggleterm.nvim"] = { module = "toggleterm", },
 
   --------------------------------------------------------------------------------
   -- lsp

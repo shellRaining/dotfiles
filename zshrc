@@ -36,6 +36,7 @@ alias ....='cd ../../..'
 alias cdv='cd ~/dotfiles/nvim'
 alias cdd='cd ~/Documents/'
 alias ra="ranger"
+alias tl="tmux ls"
 
 # ================================================================================
 # color setting 

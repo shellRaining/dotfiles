@@ -46,13 +46,6 @@ api.map.bulk_register({
         options = { silent = true },
         description = "Escape Neovim",
     },
-    -- {
-    --     mode = { "t" },
-    --     lhs = "<esc>",
-    --     rhs = "<c-\\><c-n>",
-    --     options = { silent = true },
-    --     description = "Escape terminal insert mode",
-    -- },
     {
         mode = { "n" },
         lhs = "<esc>",
@@ -60,13 +53,6 @@ api.map.bulk_register({
         options = { silent = true },
         description = "Clear search highlight",
     },
-    -- {
-    --     mode = { "n" },
-    --     lhs = "<leader><cr>",
-    --     rhs = ":noh<cr>",
-    --     options = { silent = true },
-    --     description = "Clear search highlight",
-    -- },
     {
         mode = { "n" },
         lhs = "<leader>cs",
@@ -100,24 +86,6 @@ api.map.bulk_register({
     },
     {
         mode = { "n", "v" },
-        lhs = "k",
-        rhs = function()
-            return vim.v.count > 0 and "k" or "gk"
-        end,
-        options = { silent = true, expr = true },
-        description = "Move up one line",
-    },
-    {
-        mode = { "n", "v" },
-        lhs = "j",
-        rhs = function()
-            return vim.v.count > 0 and "j" or "gj"
-        end,
-        options = { silent = true, expr = true },
-        description = "Move down one line",
-    },
-    {
-        mode = { "n", "v" },
         lhs = "H",
         rhs = function()
             return vim.v.count > 0 and "^" or "g^"
@@ -148,48 +116,6 @@ api.map.bulk_register({
         options = { silent = true },
         description = "move up five lines",
     },
-    -- {
-    --     mode = { "i", "c", "t" },
-    --     lhs = "<m-w>",
-    --     rhs = "<c-right>",
-    --     options = {},
-    --     description = "Jump to next word in insert mode",
-    -- },
-    -- {
-    --     mode = { "i", "c", "t" },
-    --     lhs = "<m-b>",
-    --     rhs = "<c-left>",
-    --     options = {},
-    --     description = "Jump to previous word in insert mode",
-    -- },
-    -- {
-    --     mode = { "i", "c", "t" },
-    --     lhs = "<m-k>",
-    --     rhs = "<up>",
-    --     options = {},
-    --     description = "Move cursor up in insert mode",
-    -- },
-    -- {
-    --     mode = { "i", "c", "t" },
-    --     lhs = "<m-j>",
-    --     rhs = "<down>",
-    --     options = {},
-    --     description = "Move cursor down in insert mode",
-    -- },
-    -- {
-    --     mode = { "i", "c", "t" },
-    --     lhs = "<m-h>",
-    --     rhs = "<left>",
-    --     options = {},
-    --     description = "Move cursor left in insert mode",
-    -- },
-    -- {
-    --     mode = { "i", "c", "t" },
-    --     lhs = "<m-l>",
-    --     rhs = "<right>",
-    --     options = {},
-    --     description = "Move cursor right in insert mode",
-    -- },
 })
 
 
@@ -260,34 +186,6 @@ api.map.bulk_register({
         rhs = "<C-w>t<C-w>H",
         options = { silent = true },
         description = "Make a horizontal window a vertical window",
-    },
-    {
-        mode = { "n" },
-        lhs = "<m-k>",
-        rhs = "<c-w>-",
-        options = { silent = true },
-        description = "Reduce horizontal split screen size",
-    },
-    {
-        mode = { "n" },
-        lhs = "<m-j>",
-        rhs = "<c-w>+",
-        options = { silent = true },
-        description = "Increase horizontal split screen size",
-    },
-    {
-        mode = { "n" },
-        lhs = "<m-h>",
-        rhs = "<c-w><",
-        options = { silent = true },
-        description = "Reduce vertical split screen size",
-    },
-    {
-        mode = { "n" },
-        lhs = "<m-l>",
-        rhs = "<c-w>>",
-        options = { silent = true },
-        description = "Increase vertical split screen size",
     },
 })
 
@@ -446,27 +344,6 @@ api.map.bulk_register({
     },
     {
         mode = { "n" },
-        lhs = "<c-e>",
-        rhs = "<cmd>BufferLineMovePrev<cr>",
-        options = { silent = true },
-        description = "Move current buffer to left",
-    },
-    {
-        mode = { "n" },
-        lhs = "<c-y>",
-        rhs = "<cmd>BufferLineMoveNext<cr>",
-        options = { silent = true },
-        description = "Move current buffer to right",
-    },
-    {
-        mode = { "n" },
-        lhs = "<leader>bt",
-        rhs = "<cmd>BufferLinePick<cr>",
-        options = { silent = true },
-        description = "Go to buffer *",
-    },
-    {
-        mode = { "n" },
         lhs = "<leader>b1",
         rhs = "<cmd>BufferLineGoToBuffer 1<cr>",
         options = { silent = true },
@@ -618,47 +495,6 @@ api.map.bulk_register({
         options = { silent = true },
         description = "Jump to previous search result",
     },
-    {
-        mode = { "n" },
-        lhs = "*",
-        rhs = function()
-            pcall(vim.cmd, "normal! " .. vim.v.count1 .. "*")
-            require("hlslens").start()
-        end,
-        options = { silent = true },
-        description = "Jump to the next word at the current cursor",
-    },
-
-    {
-        mode = { "n" },
-        lhs = "#",
-        rhs = function()
-            pcall(vim.cmd, "normal! " .. vim.v.count1 .. "#")
-            require("hlslens").start()
-        end,
-        options = { silent = true },
-        description = "Jump to the prev word at the current cursor",
-    },
-    {
-        mode = { "n" },
-        lhs = "g*",
-        rhs = function()
-            pcall(vim.cmd, "normal! " .. vim.v.count1 .. "g*")
-            require("hlslens").start()
-        end,
-        options = { silent = true },
-        description = "Jump to the next word at the current cursor (forbidden range)",
-    },
-    {
-        mode = { "n" },
-        lhs = "g#",
-        rhs = function()
-            pcall(vim.cmd, "normal! " .. vim.v.count1 .. "g#")
-            require("hlslens").start()
-        end,
-        options = { silent = true },
-        description = "Jump to the prev word at the current cursor (forbidden range)",
-    },
 })
 
 --------------------------------------------------------------------------------
@@ -666,14 +502,7 @@ api.map.bulk_register({
 --------------------------------------------------------------------------------
 api.map.bulk_register({
     {
-        mode = { "v" },
-        lhs = "<leader>cn",
-        rhs = ":CarbonNowSh<cr>",
-        options = { silent = true },
-        description = "Code screenshot",
-    },
-    {
-        mode = { "n" },
+        mode = { "n", "v" },
         lhs = "<leader>cn",
         rhs = "ggVG:CarbonNowSh<cr>",
         options = { silent = true },
@@ -687,152 +516,9 @@ api.map.bulk_register({
 api.map.bulk_register({
     {
         mode = { "n", "v" },
-        lhs = "<leader>tcs",
-        rhs = ":Translate ZH -source=EN -output=split<cr>",
-        options = { silent = true },
-        description = "Translate English to Chinese and open in split window",
-    },
-    {
-        mode = { "n", "v" },
-        lhs = "<leader>tcr",
-        rhs = ":Translate ZH -source=EN -output=replace<cr>",
-        options = { silent = true },
-        description = "Translate English to Chinese and replace English",
-    },
-    {
-        mode = { "n", "v" },
         lhs = "<leader>ts",
         rhs = ":Translate ZH -source=EN -output=floating<cr>",
         options = { silent = true },
         description = "Translate English to Chinese and open in float window",
-    },
-    {
-        mode = { "n", "v" },
-        lhs = "<leader>tci",
-        rhs = ":Translate ZH -source=EN -output=insert<cr>",
-        options = { silent = true },
-        description = "Translate English to Chinese and insert to next line",
-    },
-    {
-        mode = { "n", "v" },
-        lhs = "<leader>tcc",
-        rhs = ":Translate ZH -source=EN -output=register<cr>",
-        options = { silent = true },
-        description = "Translate English to Chinese and copy result to clipboard",
-    },
-    {
-        mode = { "n" },
-        lhs = "<leader>tcb",
-        rhs = ":Translate ZH -source=EN -output=floating -comment<cr>",
-        options = { silent = true },
-        description = "Translate English comment to Chinese and open in float window",
-    },
-    {
-        mode = { "n" },
-        lhs = "<leader>tcw",
-        rhs = ":normal! viw<cr>:Translate ZH -source=EN -output=floating<cr>",
-        options = { silent = true },
-        description = "Translate English word to Chinese and open in float window",
-    },
-    {
-        mode = { "n", "v" },
-        lhs = "<leader>tes",
-        rhs = ":Translate EN -source=ZH -output=split<cr>",
-        options = { silent = true },
-        description = "Translate Chinese to English and open in split window",
-    },
-    {
-        mode = { "n", "v" },
-        lhs = "<leader>ter",
-        rhs = ":Translate EN -source=ZH -output=replace<cr>",
-        options = { silent = true },
-        description = "Translate Chinese to English and replace Chinese",
-    },
-    {
-        mode = { "n", "v" },
-        lhs = "<leader>tef",
-        rhs = ":Translate EN -source=ZH -output=floating<cr>",
-        options = { silent = true },
-        description = "Translate Chinese to English and open in float window",
-    },
-    {
-        mode = { "n", "v" },
-        lhs = "<leader>tei",
-        rhs = ":Translate EN -source=ZH -output=insert<cr>",
-        options = { silent = true },
-        description = "Translate Chinese to English and insert to next line",
-    },
-    {
-        mode = { "n", "v" },
-        lhs = "<leader>tec",
-        rhs = ":Translate EN -source=ZH -output=register<cr>",
-        options = { silent = true },
-        description = "Translate Chinese to English and copy result to clipboard",
-    },
-    {
-        mode = { "n" },
-        lhs = "<leader>teb",
-        rhs = ":Translate EN -source=ZH -output=floating -comment<cr>",
-        options = { silent = true },
-        description = "Translate Chinese comment to English and open in float window",
-    },
-    {
-        mode = { "n" },
-        lhs = "<leader>tew",
-        rhs = ":normal! viw<cr>:Translate EN -source=ZH -output=floating<cr>",
-        options = { silent = true },
-        description = "Translate Chinese word to English and open in float window",
-    },
-})
-
---------------------------------------------------------------------------------
--- toggleTerm 的映射
---------------------------------------------------------------------------------
-api.map.bulk_register({
-    {
-        mode = { "n" },
-        lhs = "<leader>tt",
-        rhs = function()
-            require("toggleterm").term_toggle()
-        end,
-        options = { silent = true },
-        description = "Toggle bottom or vertical terminal",
-    },
-    {
-        mode = { "n" },
-        lhs = "<leader>3",
-        rhs = function()
-            require("toggleterm").float_toggle()
-        end,
-
-        options = { silent = true },
-        description = "Toggle floating terminal",
-    },
-    {
-        mode = { "n" },
-        lhs = "<leader>tv",
-        rhs = function()
-            require("toggleterm").vertical_toggle()
-        end,
-        options = { silent = true },
-        description = "Toggle vertical terminal",
-    },
-    {
-        mode = { "n" },
-        lhs = "<leader>tg",
-        rhs = function()
-            require("toggleterm").lazygit_toggle()
-        end,
-        options = { silent = true },
-        description = "Toggle lazygit terminal",
-    },
-    {
-        mode = { "n" },
-        lhs = "<leader>ta",
-        rhs = function()
-            require("toggleterm").toggle_all_term()
-        end,
-        options = { silent = true },
-        description = "Toggle all terminal",
     },
 })
