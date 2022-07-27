@@ -7,6 +7,7 @@ require("github-theme").setup({
   -- Change the "hint" color to the "orange" color, and make the "error" color bright red
   colors = {hint = "orange", error = "#ff0000"},
 
+  transparent = true,
   -- Overwrite the highlight groups
   overrides = function(c)
     return {
