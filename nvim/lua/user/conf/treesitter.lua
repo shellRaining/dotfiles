@@ -7,13 +7,30 @@ end
 configs.setup {
   ensure_installed = { "cpp", "c", "python", "markdown", "json", "yaml", "lua" },
   sync_install = false, -- install languages synchronously (only applied to `ensure_installed`)
-  ignore_install = { "" }, -- List of parsers to ignore installing
+  ignore_install = { "phpdoc" }, -- List of parsers to ignore installing
   highlight = {
     enable = true,
     disable = { "" },
     additional_vim_regex_highlighting = false,
   },
   indent = { enable = false, disable = { "yaml" } },
+  incremental_selection = {
+    enable = true,
+    keymaps = {
+      init_selection = "<cr>",
+      node_incremental = "<cr>",
+      node_decremental = "<bs>",
+      scope_incremental = "<tab>",
+    },
+  },
+  rainbow = {
+    enable = true,
+    extended_mode = true,
+    max_file_lines = 1000,
+  },
+  autotag = {
+    enable = true
+  },
   context_commentstring = {
     enable = true,
     config = {
@@ -73,4 +90,3 @@ configs.setup {
     },
   },
 }
-

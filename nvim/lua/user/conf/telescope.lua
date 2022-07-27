@@ -62,7 +62,6 @@ telescope.setup {
   pickers = {
     find_files = {
       theme = "dropdown",
-      previewer = false,
       find_command = { "fd" },
     },
     live_grep = {
@@ -71,19 +70,3 @@ telescope.setup {
   },
   extensions = {},
 }
-
--- load project extension. see project.lua file
-
---------------------------------------------------------------------------------
--- telescope mapping
---------------------------------------------------------------------------------
--- the short name of function vim.api.nvim_set_keymap
-local keymap = vim.api.nvim_set_keymap
-local opts = { noremap = true, silent = true }
-vim.g.mapleader = " "
-
-keymap("n", "<leader>ff", ":Telescope find_files<cr>", opts)
-keymap("n", "<leader>fl", ":Telescope live_grep<cr>", opts)
-keymap("n", "<leader>fh", ":Telescope oldfiles<cr>", opts)
-keymap("n", "<leader>fp", ":Telescope projects<cr>", opts)
-keymap("n", "<leader>ft", ":TodoTelescope<cr>", opts)
