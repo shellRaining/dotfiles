@@ -3,3 +3,8 @@
 [user]
 	email = shellRaining@gmail.com
 	name = shellRaining
+[alias]
+	co = checkout
+  br = branch
+  ci = commit
+  st = status
