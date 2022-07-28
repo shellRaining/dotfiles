@@ -62,7 +62,7 @@ keymap("x", "ig", ":<C-U>Gitsigns toggle_deleted<CR>", silentmode)
 --------------------------------------------------------------------------------
 -- bufferline
 --------------------------------------------------------------------------------
-keymap("n", "<c-q>", "<cmd>BufferDelete<CR>", silentmode)
+keymap("n", "<c-q>", "<cmd>bdelete<CR>", silentmode)
 keymap("n", "<c-h>", ":BufferLineCyclePrev<CR>", silentmode)
 keymap("n", "<c-l>", ":BufferLineCycleNext<CR>", silentmode)
 keymap("n", "<leader>b1", ":BufferLineGoToBuffer 1<cr>", silentmode)

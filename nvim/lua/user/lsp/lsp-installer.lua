@@ -4,22 +4,19 @@ if not status_ok then
   return
 end
 
--- NOTE: 如果发现某些lsp server安装启动时出现， client exit x and signal 0 等错误
--- 可能是因为node版本过低， 升级node版本即可
--- 升级方法
--- npm cache clean -f
--- npm install -g n
--- n stable
-
--- Register a handler that will be called for all installed servers.
--- Alternatively, you may also register handlers on specific server instances instead (see example below).
 lsp_installer.on_server_ready(function(server)
   local opts = {
     on_attach = require("user.lsp.handlers").on_attach,
     capabilities = require("user.lsp.handlers").capabilities,
     flags = {
       debounce_text_changes = 150,
-    }
+    },
+    installer_servers = {
+      "sumneko_lua",
+      "clangd",
+      "pyright",
+      "jsonls",
+    },
   }
 
   if server.name == "clangd" then
@@ -46,4 +43,3 @@ lsp_installer.on_server_ready(function(server)
   -- Refer to https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md
   server:setup(opts)
 end)
-
