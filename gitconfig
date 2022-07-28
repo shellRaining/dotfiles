@@ -9,3 +9,5 @@
   ci = commit
   st = status
   fe = fetch
+[push]
+	autoSetupRemote = true
