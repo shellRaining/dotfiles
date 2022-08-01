@@ -43,6 +43,7 @@ luac.out
 plugin/packer_compiled.lua
 plugin/
 tmux/plugins
+zshrc
 .DS_Store
 .luarc.json
 
